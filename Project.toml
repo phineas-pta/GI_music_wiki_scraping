@@ -1,0 +1,14 @@
+authors = "phineas-pta"
+name = "Genshin Impact music wiki scraping"
+uuid = "d65a5939-f0dd-4487-8176-bcd123c7e9fb"
+version = "0.0.1"
+
+[deps]
+Cascadia = "54eefc05-d75b-58de-a785-1a3403f0919f"
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
+Gumbo = "708ec375-b3d6-5a57-a7ce-8257bf98657a"
+HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
+URIs = "5c2747f8-b7ea-4ff2-ba2e-563bfd36b1d4"
