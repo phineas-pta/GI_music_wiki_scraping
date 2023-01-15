@@ -12,12 +12,13 @@ const base_url = "https://genshin-impact.fandom.com"
 const base_uri = URI(base_url * "/api.php")
 const wiki_liaison = "/wiki/"
 
-const req_headers = Dict("User-Agent" => "my_web_scraping_project/0.0.1 (https://github.com/phineas-pta/GI_music_wiki_scraping)")
+const req_headers = Dict("User-Agent" => "my_web_scraping_project/0.0.1 (GitHub phineas-pta/GI_music_wiki_scraping) Julia/1.8")
 const api_action = "parse"
 const query_template = Dict(
 	"action" => api_action,
-	"formatversion" => "2",
-	"format" => "json"
+	"redirects" => "",
+	"format" => "json",
+	"formatversion" => "2"
 )
 const api_output_sections = "sections"
 const api_output_text = "text"
@@ -30,6 +31,7 @@ function request_wiki(query::Dict; show_info::Bool)::Dict
 	if show_info
 		@info(base_url * wiki_liaison * query["page"])
 		@info(full_uri)
+		# change "json" to "jsonfm" to be more human-readable
 	end
 	resp.status == 200 || error("invalid page")
 
