@@ -18,4 +18,4 @@ working with Julia projects:
 
 ví dụ sử dụng ThiViện API:
  - tra từ: https://github.com/pexea12/hanviet/blob/master/background.js
- - chuyển đổi Hán Việt: https://github.com/ds4v/NomNaSite/blob/main/utils.py
+ - chuyển đổi Hán Việt: https://gist.github.com/phineas-pta/457b9f546ec20d5d2019d5799847eb01

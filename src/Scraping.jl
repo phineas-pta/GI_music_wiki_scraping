@@ -1,6 +1,6 @@
 module Scraping
 
-export get_sections, get_html
+export get_sections, get_html, convertHanViet
 
 import JSON, HTTP
 import URIs.URI, Logging.@info, DataFrames.DataFrame
@@ -56,6 +56,20 @@ function get_html(page::String; section::Union{Int, Nothing} = nothing, show_inf
 	res_req = request_wiki(query; show_info = show_info)
 	html_text = parsehtml(res_req[api_action][api_output_text])
 	return html_text.root[2][1] # <body> -> <div class="mw-parser-output">
+end
+
+const thivien_url = "https://hvdic.thivien.net/transcript-query.json.php"
+const thivien_headers = merge(req_headers, Dict("Content-Type" => "application/x-www-form-urlencoded; charset=UTF-8"))
+
+# i also shared this code at https://gist.github.com/phineas-pta/457b9f546ec20d5d2019d5799847eb01
+function convertHanViet(input::String)::String
+	payload = codeunits("mode=trans&lang=1&input=$input")
+	response = HTTP.request("POST", thivien_url, thivien_headers, payload)
+	response.status == 200 || error("connection error")
+	res = JSON.parse(String(response.body))
+	res["message"] == "OK" || error("problem with input")
+	yolo = [el["o"][1] for el in res["result"]]
+	return join(yolo, ' ')
 end
 
 end # Scraping module
